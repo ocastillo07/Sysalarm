@@ -1,0 +1,741 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{D146D2BF-E8C9-4727-9277-D5A994898673}</ProjectGuid>
+			<MainSource>Sysalarm.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DependencyCheckOutputName>Sysalarm.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Sysalarm.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<None Include="Sysalarm.todo"/>
+			<DCCReference Include="Uprincipal.pas">
+				<Form>frmprincipal</Form>
+			</DCCReference>
+			<DCCReference Include="Udm.pas">
+				<Form>DMAccesos</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Ubusquedas.pas">
+				<Form>frmbusquedas</Form>
+			</DCCReference>
+			<DCCReference Include="Uprospectos.pas">
+				<Form>frmprospectos</Form>
+			</DCCReference>
+			<DCCReference Include="Utipos.pas">
+				<Form>frmtipos</Form>
+			</DCCReference>
+			<DCCReference Include="Uestatus.pas">
+				<Form>frmstatus_eventos</Form>
+			</DCCReference>
+			<DCCReference Include="Ufuentes.pas">
+				<Form>frmfuentes</Form>
+			</DCCReference>
+			<DCCReference Include="Utipo_servicios.pas">
+				<Form>frmtipo_servicios</Form>
+			</DCCReference>
+			<DCCReference Include="Uorigenes.pas">
+				<Form>frmorigenes</Form>
+			</DCCReference>
+			<DCCReference Include="Uareas.pas">
+				<Form>frmareas</Form>
+			</DCCReference>
+			<DCCReference Include="Upuestos.pas">
+				<Form>frmpuestos</Form>
+			</DCCReference>
+			<DCCReference Include="Ugiros.pas">
+				<Form>frmgiros</Form>
+			</DCCReference>
+			<DCCReference Include="about.pas">
+				<Form>frmAboutBox</Form>
+			</DCCReference>
+			<DCCReference Include="Ucategorias.pas">
+				<Form>frmcategorias</Form>
+			</DCCReference>
+			<DCCReference Include="Uasig_eve_vend.pas">
+				<Form>frmasig_even_vend</Form>
+			</DCCReference>
+			<DCCReference Include="Utipos_actividades.pas">
+				<Form>frmtipos_actividades</Form>
+			</DCCReference>
+			<DCCReference Include="Uasig_eve_vend_admin.pas">
+				<Form>frmasig_even_vend1</Form>
+			</DCCReference>
+			<DCCReference Include="Uproveedores.pas">
+				<Form>frmproveedores</Form>
+			</DCCReference>
+			<DCCReference Include="Udpto.pas">
+				<Form>frmdpto</Form>
+			</DCCReference>
+			<DCCReference Include="Utel.pas">
+				<Form>frmtel</Form>
+			</DCCReference>
+			<DCCReference Include="Ucontactos.pas">
+				<Form>frmcontacto</Form>
+			</DCCReference>
+			<DCCReference Include="Uusuarios.pas">
+				<Form>frmusuarios</Form>
+			</DCCReference>
+			<DCCReference Include="Uarticulos.pas">
+				<Form>frmarticulos</Form>
+			</DCCReference>
+			<DCCReference Include="Urecursos.pas"/>
+			<DCCReference Include="Ufamilias.pas">
+				<Form>frmfamilias</Form>
+			</DCCReference>
+			<DCCReference Include="Udet_art.pas">
+				<Form>frmdet_art</Form>
+			</DCCReference>
+			<DCCReference Include="Uclientes.pas">
+				<Form>frmclientes</Form>
+			</DCCReference>
+			<DCCReference Include="Usplash.pas">
+				<Form>frmsplash</Form>
+			</DCCReference>
+			<DCCReference Include="Usecciones.pas">
+				<Form>frmsecciones</Form>
+			</DCCReference>
+			<DCCReference Include="Usectores.pas">
+				<Form>frmsectores</Form>
+			</DCCReference>
+			<DCCReference Include="UBuscaArt.pas">
+				<Form>frmBuscaArt</Form>
+			</DCCReference>
+			<DCCReference Include="Upedidos.pas">
+				<Form>frmpedidos</Form>
+			</DCCReference>
+			<DCCReference Include="Uart_comp.pas">
+				<Form>frmart_comp</Form>
+			</DCCReference>
+			<DCCReference Include="UDatAdiCliente.pas">
+				<Form>frmDatAdiCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UOrdenCompra.pas">
+				<Form>frmOrdenCompra</Form>
+			</DCCReference>
+			<DCCReference Include="Uart_prov.pas">
+				<Form>frmart_prov</Form>
+			</DCCReference>
+			<DCCReference Include="IdSim.pas"/>
+			<DCCReference Include="Ucompras.pas">
+				<Form>frmcompras</Form>
+			</DCCReference>
+			<DCCReference Include="Ufrmrep_act_vend.pas">
+				<Form>frmrep_act_vend</Form>
+			</DCCReference>
+			<DCCReference Include="Urep_oport.pas">
+				<Form>frmrep_oportu</Form>
+			</DCCReference>
+			<DCCReference Include="Uparcializacion.pas">
+				<Form>frmparcializacion</Form>
+			</DCCReference>
+			<DCCReference Include="Udmrep.pas">
+				<Form>DMREPORTES</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Udatosfactura.pas">
+				<Form>frmdatosfactura</Form>
+			</DCCReference>
+			<DCCReference Include="Urepllamadasxfuente.pas">
+				<Form>frmrepllamadasxfuente</Form>
+			</DCCReference>
+			<DCCReference Include="Umoviles.pas">
+				<Form>frmmoviles</Form>
+			</DCCReference>
+			<DCCReference Include="UColonias.pas">
+				<Form>frmColonias</Form>
+			</DCCReference>
+			<DCCReference Include="UColSector.pas">
+				<Form>frmColSector</Form>
+			</DCCReference>
+			<DCCReference Include="Ulineas.pas">
+				<Form>frmlineas</Form>
+			</DCCReference>
+			<DCCReference Include="Uabogados.pas">
+				<Form>frmabogados</Form>
+			</DCCReference>
+			<DCCReference Include="Ucontratos.pas">
+				<Form>frmcontratos</Form>
+			</DCCReference>
+			<DCCReference Include="Umotivo_cancel.pas">
+				<Form>frmmotivos_cancel</Form>
+			</DCCReference>
+			<DCCReference Include="Urelacionborrar.pas">
+				<Form>frmRelacionBorrar</Form>
+			</DCCReference>
+			<DCCReference Include="UNotas.pas">
+				<Form>frmnotas</Form>
+			</DCCReference>
+			<DCCReference Include="Uotras_entradas.pas">
+				<Form>frmotras_entradas</Form>
+			</DCCReference>
+			<DCCReference Include="Uautentificacion.pas">
+				<Form>frmautentificacion</Form>
+			</DCCReference>
+			<DCCReference Include="USqlViewer.pas">
+				<Form>Viewer</Form>
+			</DCCReference>
+			<DCCReference Include="Utipomovi.pas">
+				<Form>frmtiposmovi</Form>
+			</DCCReference>
+			<DCCReference Include="URemiFac.pas">
+				<Form>frmRemiFac</Form>
+			</DCCReference>
+			<DCCReference Include="Ucobros.pas">
+				<Form>frmcobros</Form>
+			</DCCReference>
+			<DCCReference Include="Uboletas_mensuales.pas">
+				<Form>frmboletas_mensuales</Form>
+			</DCCReference>
+			<DCCReference Include="UCancelaciones.pas">
+				<Form>frmcancelaciones</Form>
+			</DCCReference>
+			<DCCReference Include="UInstMod.pas">
+				<Form>frmInstMod</Form>
+			</DCCReference>
+			<DCCReference Include="Umoduloreportes.pas">
+				<Form>frmmoduloreportes</Form>
+			</DCCReference>
+			<DCCReference Include="UDevCompras.pas">
+				<Form>frmDevCompras</Form>
+			</DCCReference>
+			<DCCReference Include="Uremisionar_boletas.pas">
+				<Form>frmremisionar_boletas</Form>
+			</DCCReference>
+			<DCCReference Include="Uclie_cancel.pas">
+				<Form>frmclie_cancel</Form>
+			</DCCReference>
+			<DCCReference Include="UNotasCredito.pas">
+				<Form>frmNotasCredito</Form>
+			</DCCReference>
+			<DCCReference Include="Uconcepto_es.pas">
+				<Form>frmconcepto_es</Form>
+			</DCCReference>
+			<DCCReference Include="Uaplica.pas">
+				<Form>frmaplica</Form>
+			</DCCReference>
+			<DCCReference Include="UNoVistaVtasCliente.pas">
+				<Form>frmNoVistaVtasCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UFacturacionLotes.pas">
+				<Form>frmFacturacionLotes</Form>
+			</DCCReference>
+			<DCCReference Include="UfrmPagosDebe.pas">
+				<Form>frmPagosDebe</Form>
+			</DCCReference>
+			<DCCReference Include="Uconfiguraciones.pas">
+				<Form>frmconfiguraciones</Form>
+			</DCCReference>
+			<DCCReference Include="Umensaje.pas">
+				<Form>frmmensaje</Form>
+			</DCCReference>
+			<DCCReference Include="UFechaAplicacion.pas">
+				<Form>frmFechaAplicacion</Form>
+			</DCCReference>
+			<DCCReference Include="UImpBoletas.pas">
+				<Form>frmImpBoletas</Form>
+			</DCCReference>
+			<DCCReference Include="UMensajeCliente.pas">
+				<Form>frmMensajeCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UImpFact.pas">
+				<Form>frmImpFact</Form>
+			</DCCReference>
+			<DCCReference Include="UFactPed.pas">
+				<Form>frmFactPed</Form>
+			</DCCReference>
+			<DCCReference Include="UGenBol.pas">
+				<Form>frmGenBol</Form>
+			</DCCReference>
+			<DCCReference Include="Umonitoreo.pas">
+				<Form>frmMonitoreo</Form>
+			</DCCReference>
+			<DCCReference Include="Umunicipios.pas">
+				<Form>frmmunicipios</Form>
+			</DCCReference>
+			<DCCReference Include="Utipoasentamientos.pas">
+				<Form>frmtipoasenta</Form>
+			</DCCReference>
+			<DCCReference Include="Uestados.pas">
+				<Form>frmestados</Form>
+			</DCCReference>
+			<DCCReference Include="Ullegada_patrulleros.pas">
+				<Form>frmllegada_patrulleros</Form>
+			</DCCReference>
+			<DCCReference Include="Uactivacion_positiva.pas">
+				<Form>frmdetalles_pos</Form>
+			</DCCReference>
+			<DCCReference Include="Uinyeccion_alarmas.pas">
+				<Form>frminyeccion_alarmas</Form>
+			</DCCReference>
+			<DCCReference Include="Umodems.pas">
+				<Form>frmmodems</Form>
+			</DCCReference>
+			<DCCReference Include="Ureports.pas">
+				<Form>Reports_Alarmex</Form>
+			</DCCReference>
+			<DCCReference Include="Uzonasdefault.pas">
+				<Form>frmZonasDefault</Form>
+			</DCCReference>
+			<DCCReference Include="Utipo_alarmas.pas">
+				<Form>frmtipoalarmas</Form>
+			</DCCReference>
+			<DCCReference Include="UClasifServ.pas">
+				<Form>frmClasificacionServicios</Form>
+			</DCCReference>
+			<DCCReference Include="UEnviarCorreo.pas">
+				<Form>frmEnviarCorreo</Form>
+			</DCCReference>
+			<DCCReference Include="UNoClienteZonas.pas">
+				<Form>frmNoZonasCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UReClasificacion.pas">
+				<Form>frmReClasificacion</Form>
+			</DCCReference>
+			<DCCReference Include="Uturnos.pas">
+				<Form>frmturnos</Form>
+			</DCCReference>
+			<DCCReference Include="Uservicios.pas">
+				<Form>frmservicios</Form>
+			</DCCReference>
+			<DCCReference Include="UPrintLoteServicios.pas">
+				<Form>frmPrintLoteServicios</Form>
+			</DCCReference>
+			<DCCReference Include="UBuscarServ.pas">
+				<Form>frmBuscarServ</Form>
+			</DCCReference>
+			<DCCReference Include="Upatrullaje.pas">
+				<Form>frmpatrulleros</Form>
+			</DCCReference>
+			<DCCReference Include="Utravel.pas">
+				<Form>frmtravel</Form>
+			</DCCReference>
+			<DCCReference Include="Uquejas.pas">
+				<Form>frmQuejas</Form>
+			</DCCReference>
+			<DCCReference Include="Urepdetalle.pas">
+				<Form>frmrepdetalle</Form>
+			</DCCReference>
+			<DCCReference Include="UMantenimientos.pas">
+				<Form>frmmantenimientos</Form>
+			</DCCReference>
+			<DCCReference Include="Upreguntapatrullero.pas">
+				<Form>frmPreguntaPatrullero</Form>
+			</DCCReference>
+			<DCCReference Include="utraficocliente.pas">
+				<Form>frmtraficocliente</Form>
+			</DCCReference>
+			<DCCReference Include="UunidadNegocio.pas">
+				<Form>frmUnidadNegocio</Form>
+			</DCCReference>
+			<DCCReference Include="Uabcmantenimientos.pas">
+				<Form>frmabcmantenimientos</Form>
+			</DCCReference>
+			<DCCReference Include="Ubonificaciones.pas">
+				<Form>frmbonificaciones</Form>
+			</DCCReference>
+			<DCCReference Include="UBorraVentas.pas">
+				<Form>frmBorraVentas</Form>
+			</DCCReference>
+			<DCCReference Include="UBolAnuales.pas">
+				<Form>frmBolAnuales</Form>
+			</DCCReference>
+			<DCCReference Include="UCambiaContratos.pas">
+				<Form>frmCambiaContrato</Form>
+			</DCCReference>
+			<DCCReference Include="Upedidospendientes.pas">
+				<Form>frmpedidospendientes</Form>
+			</DCCReference>
+			<DCCReference Include="UNoClientes.pas">
+				<Form>frmNoClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UAperturaCierre.pas">
+				<Form>frmAperturaCierre</Form>
+			</DCCReference>
+			<DCCReference Include="UReasignaFacturas.pas">
+				<Form>frmReasignaFact</Form>
+			</DCCReference>
+			<DCCReference Include="UCfgPresupuestos.pas">
+				<Form>frmCfgPresup</Form>
+			</DCCReference>
+			<DCCReference Include="UPresupuesto2.pas">
+				<Form>frmpresupuestos2</Form>
+			</DCCReference>
+			<DCCReference Include="UHistoricoReportes.pas">
+				<Form>frmHistoricoReportes</Form>
+			</DCCReference>
+			<DCCReference Include="UFormaPagoPre.pas">
+				<Form>frmFormasPagoPre</Form>
+			</DCCReference>
+			<DCCReference Include="UCambiaExistencias.pas">
+				<Form>frmCambiaExistencias</Form>
+			</DCCReference>
+			<DCCReference Include="UColUsuarios.pas">
+				<Form>frmColUsuarios</Form>
+			</DCCReference>
+			<DCCReference Include="uMantenimientosSys.pas">
+				<Form>frmMantenimientosSys</Form>
+			</DCCReference>
+			<DCCReference Include="URequisiciones.pas">
+				<Form>frmRequisiciones</Form>
+			</DCCReference>
+			<DCCReference Include="UCambs.pas">
+				<Form>frmCabms</Form>
+			</DCCReference>
+			<DCCReference Include="URepLlamXFuente.pas">
+				<Form>frmLlamXFuente</Form>
+			</DCCReference>
+			<DCCReference Include="URepAsigOrig.pas">
+				<Form>frmRepAsigOrig</Form>
+			</DCCReference>
+			<DCCReference Include="UCambiaSaldos.pas">
+				<Form>frmCambiaSaldos</Form>
+			</DCCReference>
+			<DCCReference Include="Uprotocolos.pas">
+				<Form>frmProtocolos</Form>
+			</DCCReference>
+			<DCCReference Include="UConversionProtocolos.pas">
+				<Form>frmConversionProtocolos</Form>
+			</DCCReference>
+			<DCCReference Include="UPasarColonias.pas">
+				<Form>frmPasarColonias</Form>
+			</DCCReference>
+			<DCCReference Include="UExClientes.pas">
+				<Form>frmExClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UExDatosfactura.pas">
+				<Form>frmExDatosfactura</Form>
+			</DCCReference>
+			<DCCReference Include="USectoresVencidos.pas">
+				<Form>frmsectoresvencidos</Form>
+			</DCCReference>
+			<DCCReference Include="UBuscaManuales.pas">
+				<Form>frmBuscaManual</Form>
+			</DCCReference>
+			<DCCReference Include="UMinuta.pas">
+				<Form>frmMinuta</Form>
+			</DCCReference>
+			<DCCReference Include="fpresupuesto.pas">
+				<Form>Frame1</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UOrdenes.pas">
+				<Form>frmOrdenes</Form>
+			</DCCReference>
+			<DCCReference Include="USenalesOpenClose.pas">
+				<Form>frmSenalesOpenClose</Form>
+			</DCCReference>
+			<DCCReference Include="Utest.pas">
+				<Form>frmtest</Form>
+			</DCCReference>
+			<DCCReference Include="UCambioFactura.pas">
+				<Form>frmCambioFactura</Form>
+			</DCCReference>
+			<DCCReference Include="UAutorizacionCambios.pas">
+				<Form>frmAutorizacionCambios</Form>
+			</DCCReference>
+			<DCCReference Include="UFacturacionOportunidad.pas">
+				<Form>frmFacturacionOportunidad</Form>
+			</DCCReference>
+			<DCCReference Include="Ureportes.pas"/>
+			<DCCReference Include="uComisionistas.pas">
+				<Form>frmComisionistas</Form>
+			</DCCReference>
+			<DCCReference Include="UMediaFiliacion.pas">
+				<Form>frmMediaFiliacion</Form>
+			</DCCReference>
+			<DCCReference Include="UBuroCredito.pas">
+				<Form>frmBuroCredito</Form>
+			</DCCReference>
+			<DCCReference Include="UDesaplicarNC.pas">
+				<Form>frmDesaplicarNC</Form>
+			</DCCReference>
+			<DCCReference Include="URepClientes.pas">
+				<Form>frmRepClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UMinutaMensual.pas">
+				<Form>frmMinutaMensual</Form>
+			</DCCReference>
+			<DCCReference Include="UMarcacionCobranza.pas">
+				<Form>frmMarcacionCobranza</Form>
+			</DCCReference>
+			<DCCReference Include="UMinutaGerencial.pas">
+				<Form>frmMinutaGerencial</Form>
+			</DCCReference>
+			<DCCReference Include="LoginWindow_U.pas">
+				<Form>LoginWindow</Form>
+			</DCCReference>
+			<DCCReference Include="UCometarios.pas">
+				<Form>frmcomentarios</Form>
+			</DCCReference>
+			<DCCReference Include="Utips.pas">
+				<Form>frmtips</Form>
+			</DCCReference>
+			<DCCReference Include="UAgendaTelefonica.pas">
+				<Form>frmagendatelefonica</Form>
+			</DCCReference>
+			<DCCReference Include="UDatosFactOPort.pas">
+				<Form>frmDatosFactOport</Form>
+			</DCCReference>
+			<DCCReference Include="UGraficas.pas">
+				<Form>frmgraficas</Form>
+			</DCCReference>
+			<DCCReference Include="URepRecHumanos.pas">
+				<Form>frmRepRecHumanos</Form>
+			</DCCReference>
+			<DCCReference Include="URepMultiples.pas">
+				<Form>frmRepMultiples</Form>
+			</DCCReference>
+			<DCCReference Include="URepCobranza.pas">
+				<Form>frmRepCobranza</Form>
+			</DCCReference>
+			<DCCReference Include="URep_llamadastmk.pas">
+				<Form>frmrepllamadastmk</Form>
+			</DCCReference>
+			<DCCReference Include="USalidaInventario.pas">
+				<Form>frmSalidaInventario</Form>
+			</DCCReference>
+			<DCCReference Include="URepServicios.pas">
+				<Form>frmRepServicios</Form>
+			</DCCReference>
+			<DCCReference Include="Umesesremision.pas">
+				<Form>frmmesesremision</Form>
+			</DCCReference>
+			<DCCReference Include="URepCentral.pas">
+				<Form>frmRepCentral</Form>
+			</DCCReference>
+			<DCCReference Include="UNotasActivPositivas.pas">
+				<Form>frmnotasactivpositivas</Form>
+			</DCCReference>
+			<DCCReference Include="UConfiguracionesXConcepto.pas">
+				<Form>frmConfiguracionesXConcepto</Form>
+			</DCCReference>
+			<DCCReference Include="UBolNoImp.pas">
+				<Form>frmBolNoImp</Form>
+			</DCCReference>
+			<DCCReference Include="Uubicacion.pas">
+				<Form>frmubicacion</Form>
+			</DCCReference>
+			<DCCReference Include="UEnviaPromosion.pas">
+				<Form>frmEnviaPromosion</Form>
+			</DCCReference>
+			<DCCReference Include="UCostos_Servicios.pas">
+				<Form>frmcostosservicios</Form>
+			</DCCReference>
+			<DCCReference Include="Ureporteestadisticas.pas">
+				<Form>frmreporteestadisticas</Form>
+			</DCCReference>
+			<DCCReference Include="UTCPComCliente.pas"/>
+			<DCCReference Include="USeguimientoAbogado.pas">
+				<Form>frmseguimientoabogado</Form>
+			</DCCReference>
+			<DCCReference Include="UEvaluacionDesempeno.pas">
+				<Form>frmEvaluacionDesempeno</Form>
+			</DCCReference>
+			<DCCReference Include="UMetasCobranza.pas">
+				<Form>frmMetasCobranza</Form>
+			</DCCReference>
+			<DCCReference Include="URemisionesAnuales.pas">
+				<Form>frmremisionesanuales</Form>
+			</DCCReference>
+			<DCCReference Include="UNoNotasCredito.pas">
+				<Form>frmNoNotasCredito</Form>
+			</DCCReference>
+			<DCCReference Include="UVistaVtasCliente.pas">
+				<Form>frmVistaVtasCliente</Form>
+			</DCCReference>
+			<DCCReference Include="Umotivocancelapedidos.pas">
+				<Form>frmmotcancelapedidos</Form>
+			</DCCReference>
+			<DCCReference Include="Umotivocortesias.pas">
+				<Form>frmmotivocortesias</Form>
+			</DCCReference>
+			<DCCReference Include="UCuentascompartidas.pas">
+				<Form>frmCuentascompartidas</Form>
+			</DCCReference>
+			<DCCReference Include="USaldarCortesias.pas">
+				<Form>frmSaldarCortesias</Form>
+			</DCCReference>
+			<DCCReference Include="UObrasProceso.pas">
+				<Form>frmObrasProceso</Form>
+			</DCCReference>
+			<DCCReference Include="USectoresTurnos.pas">
+				<Form>frmSectoresTurnos</Form>
+			</DCCReference>
+			<DCCReference Include="uRepInstalaciones.pas">
+				<Form>frmRepInstalaciones</Form>
+			</DCCReference>
+			<DCCReference Include="Uexportar.pas">
+				<Form>frmexportar</Form>
+			</DCCReference>
+			<DCCReference Include="UusuariosDerechos.pas">
+				<Form>frmUsuariosDerechos</Form>
+			</DCCReference>
+			<DCCReference Include="uRepVendedores.pas">
+				<Form>frmrepVendedores</Form>
+			</DCCReference>
+			<DCCReference Include="Udmsincronizar.pas">
+				<Form>DMSincronizar</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UProgreso.pas">
+				<Form>frmprogreso</Form>
+			</DCCReference>
+			<DCCReference Include="uDeshacerCancelacion.pas">
+				<Form>frmDeshacerCancelacion</Form>
+			</DCCReference>
+			<DCCReference Include="uUsuarioActual.pas">
+				<Form>frmUsuarioActual</Form>
+			</DCCReference>
+			<DCCReference Include="URepEstandares.pas">
+				<Form>frmRepEstandares</Form>
+			</DCCReference>
+			<DCCReference Include="Ucliente_zonas.pas">
+				<Form>frmZonasCliente</Form>
+			</DCCReference>
+			<DCCReference Include="uscanner.pas">
+				<Form>frmscan</Form>
+			</DCCReference>
+			<DCCReference Include="UExTel.pas">
+				<Form>frmExTel</Form>
+			</DCCReference>
+			<DCCReference Include="UExBuscarServ.pas">
+				<Form>frmExBuscarServ</Form>
+			</DCCReference>
+			<DCCReference Include="UExNotas.pas">
+				<Form>frmExNotas</Form>
+			</DCCReference>
+			<DCCReference Include="uComunicador.pas">
+				<Form>frmComunicadores</Form>
+			</DCCReference>
+			<DCCReference Include="UNotasSeg.pas">
+				<Form>frmnotasseg</Form>
+			</DCCReference>
+			<DCCReference Include="uEntradasComunicador.pas">
+				<Form>frmEntradasComunicador</Form>
+			</DCCReference>
+			<DCCReference Include="uRepLlamadasTel.pas">
+				<Form>frmRepLlamadasTel</Form>
+			</DCCReference>
+			<DCCReference Include="UAgendaGeneral.pas">
+				<Form>frmAgendaGeneral</Form>
+			</DCCReference>
+			<DCCReference Include="uSolicitudesWeb.pas">
+				<Form>frmSolicitudesWeb</Form>
+			</DCCReference>
+			<DCCReference Include="UEmpresas.pas">
+				<Form>frmempresas</Form>
+			</DCCReference>
+			<DCCReference Include="uNotasTemp.pas">
+				<Form>frmNotasTemp</Form>
+			</DCCReference>
+			<DCCReference Include="URepCaja.pas">
+				<Form>frmRepCaja</Form>
+			</DCCReference>
+			<DCCReference Include="uFELog.pas">
+				<Form>frmFELog</Form>
+			</DCCReference>
+			<DCCReference Include="uFERegresaARemision.pas">
+				<Form>frmFERegresarARemision</Form>
+			</DCCReference>
+			<DCCReference Include="UAsigFactPedFE.pas">
+				<Form>frmAsigFactPedFE</Form>
+			</DCCReference>
+			<DCCReference Include="UCancelacionesFE.pas">
+				<Form>frmCancelacionesFE</Form>
+			</DCCReference>
+			<DCCReference Include="UCobrosFE.pas">
+				<Form>frmCobrosFE</Form>
+			</DCCReference>
+			<DCCReference Include="UFacturacionLotesFE.pas">
+				<Form>frmFacturacionLotesFE</Form>
+			</DCCReference>
+			<DCCReference Include="UNotasCreditoFE.pas">
+				<Form>frmNotasCreditoFE</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Sysalarm.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2058</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Doctor PC</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Sistema para la administración de alarmex</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">Sysalarm</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.8.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

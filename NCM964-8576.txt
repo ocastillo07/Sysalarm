@@ -1,0 +1,15 @@
+~964|Corporacion Mexicalense S.A. De C.V.|CME8507111Z9|Lazaro cárdenas|359||Ex. Ejido Coahuila|Mexicali||Mexicali|Bc|Mexico|21360|104-2000||||||||||||2.2|NCM|81583|en una sola exhibicion|2012-07-02|11:37:11|Lazaro cárdenas|359||Ex. Ejido Coahuila|Mexicali||Mexicali|Bc|Mexico|21360|OXIGENO Y ACETILENO SA DE CV|OAC5505028W8|BOULEVARD LOPEZ MATEOS|850||BELLAVISTA|||MEXICALI,|BAJA CALIFORNIA NORTE|MEXICO|21150|4767.57|524.43|5292.00|1|NC|||||||||||||||||||||||||MXN|||||||||||||||||CINCO MIL DOSCIENTOS NOVENTA Y DOS PESOS 00/100 |||||||||||||8576|RESIDENCIAL|||SB3784|||8||NO APLICA TARIFA DE PROMOCION|552-88-28||||lp3||||||||||||||||||||facturasservicentropemex@hotmail.com||||||||4767.57|524.43|5292.00||||||11.00|0.00|||Régimen General de Ley|No Identificado|||||||||1|||Mexicali, Bc||||||||2011||No Identificado|egreso||524.43
+¬Monitoreo correspondiente al mes de enero 2012|1|Piezas|397.30|397.30|||||||||||MON0112|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de febrero 2012|1|Piezas|397.30|397.30|||||||||||MON0212|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de marzo 2012|1|Piezas|397.30|397.30|||||||||||MON0312|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo corresponientes al mes de abril 2012|1|Piezas|397.30|397.30|||||||||||MON0412|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de mayo 2012|1|Piezas|397.30|397.30|||||||||||MON0512|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de junio 2012|1|Piezas|397.30|397.30|||||||||||MON0612|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de julio 2012|1|Piezas|397.30|397.30|||||||||||MON0712|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de agosto 2012|1|Piezas|397.30|397.30|||||||||||MON0812|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de septiembre 2012|1|Piezas|397.30|397.30|||||||||||MON0912|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de octubre 2012|1|Piezas|397.30|397.30|||||||||||MON1012|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de noviembre 2012|1|Piezas|397.30|397.30|||||||||||MON1112|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Monitoreo correspondiente al mes de diciembre 2012|1|Piezas|397.27|397.27|||||||||||MON1212|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¬TR|IVA|524.43|11.00
+

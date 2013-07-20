@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{ACA99D24-2A4B-4C16-9E92-13D6ABC4AC35}") = "Sysalarm", "Sysalarm.isproj", "{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Default = CD_ROM|Default
+		Custom|Default = Custom|Default
+		DVD-10|Default = DVD-10|Default
+		DVD-18|Default = DVD-18|Default
+		DVD-5|Default = DVD-5|Default
+		DVD-9|Default = DVD-9|Default
+		SingleImage|Default = SingleImage|Default
+		WebDeployment|Default = WebDeployment|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.CD_ROM|Default.ActiveCfg = CD_ROM
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.CD_ROM|Default.Build.0 = CD_ROM
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.Custom|Default.ActiveCfg = Custom
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.Custom|Default.Build.0 = Custom
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-10|Default.ActiveCfg = DVD-10
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-10|Default.Build.0 = DVD-10
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-18|Default.ActiveCfg = DVD-18
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-18|Default.Build.0 = DVD-18
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-5|Default.ActiveCfg = DVD-5
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-5|Default.Build.0 = DVD-5
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-9|Default.ActiveCfg = DVD-9
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.DVD-9|Default.Build.0 = DVD-9
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.SingleImage|Default.ActiveCfg = SingleImage
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.SingleImage|Default.Build.0 = SingleImage
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.WebDeployment|Default.ActiveCfg = WebDeployment
+		{345638A4-D9F4-47CC-B98A-B4B0DB4511F7}.WebDeployment|Default.Build.0 = WebDeployment
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

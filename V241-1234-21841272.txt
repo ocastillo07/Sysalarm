@@ -1,0 +1,6 @@
+~241|Corporacion Mexicalense S.A. De C.V.|CME8507111Z9|Lazaro cárdenas|359||Ex. Ejido Coahuila|Mexicali||Mexicali|Bc|Mexico|21360|104-2000||||||||||||2.2|V|152144|en una sola exhibicion|2012-05-17|11:29:00|Lazaro cárdenas|359||Ex. Ejido Coahuila|Mexicali||Mexicali|Bc|Mexico|21360|VIÑA SANTIAGO S.A. DE C.V. |VSA0709037A5|BRASIL 47-A|||LOMAS DE QUERETARO|||QUERETARO,|QUERETARO.|MEXICO|0|7423.49|1484.70|10764.06|1|FA|||||||||||||||||||||||||MXN|||||||||||||||||DIEZ MIL SETECIENTOS SESENTA Y CUATRO PESOS 06/100 |||||||||||||1234|COMERCIAL|||21841272||VGG|11||VINO ENSAMBLE ARENAL 2008 Y ENSAMBLE C0LINA 2007|-|[V]|||lp3||||||||||||||||||||olgareyes93@hotmail.com||||||||7423.49|1484.70|10764.06||||||16.00|1855.87|||Régimen General de Ley|No identificado|||||||||1|||Mexicali, Bc||||||||2010||Transferencia|ingreso||3340.57
+¬Ensamble arenal|24|No aplica|206.21|4948.99|||||||||||ENS ARE|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Ensamble colina |12|No aplica|206.21|2474.50|||||||||||ENS COL|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¬TR|IVA|1484.70|16.00
+TR|IEPS|1855.87|25.00
+

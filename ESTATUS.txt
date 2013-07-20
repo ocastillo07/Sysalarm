@@ -1,0 +1,192 @@
+ESTATUS sysalarm
+
+****articulos que siempre tienen que existir****
+monitoreo
+cargos
+descto pp
+abono
+
+***Para la Agenda del Vendedor debe de existir***
+Area: Ventas y Puesto Coordinador ventas
+
+
+***clientes /estatus
+0 = inactivo
+1 = activo
+2 = por atender
+
+
+***requisiciones-----------------------------------------
+0 = sin afectar  
+1 = en orden   
+2 = surtido   
+3 = incompleto    
+4 = cancelado
+
+
+***pedidos/estatus   
+0 = pedido  
+1 = cancelado   
+2 = backorder   
+
+3 = remisionado
+4 = facturado
+5 = remisionado2
+
+****DetPedidos/estatus
+0 = no surtido  
+1 = surtido   
+2 = surtido incompleto con backorder   
+3 = cancelado
+
+
+***PAGOS /movimiento                 ///PAGOS CLIENTES//
+0 = venta.
+1 = parcialidad.
+2 = cobro.
+3 = cancelado.
+4 = abono por parcializacion.
+5 = abono por cancelacion.
+6 = nota de credito
+7 = aplicacion
+8 = ajuste(A de abono?)
+9 = ajuste(6)
+10 = abono para saldar la venta por facturacion
+10 = abono por nota de credito............
+
+***pagos/movimiento crescendo
+2 = cancelacion
+3 = nota de credito 
+5 = cobro
+A = ajuste (x nota de credito)
+1 = venta ó parcializacion
+6=  ajuste ?
+7=  aplicacion
+P = parcialidad
+
+
+***LINEAS/crescendo
+
+1 = monitoreo
+2 = intereses
+3 = servicio
+4 = equipo
+11 = otros
+
+
+***lineas / sysalarm
+
+4  = equipo                      
+3  = servicio
+1  = monitoreo
+2 = intereses
+5 = otros
+
+
+***Instalaciones / estatus
+
+0 = PENDIENTE
+1 = INSTALANDO
+2 = SUPERVISION
+3 = SUPERV. C/PROB INST.
+4 = UBICACION
+5 = CUESTIONARIO
+
+
+clientes
+
+***crescendo-contratos
+
+001 = mensual normal
+012 = anual normal
+005 = mensual forzoso
+010 = anual forzoso
+007 = compartido sin importe
+011 = compartido excepcion
+
+***estatus:
+004 = cortesias
+CAN = cancelado
+MOR = moroso
+LIB =cuenta libre
+
+
+***sysalarm - contratos
+
+1 = mensual normal
+2 = anual normal
+3 = mensual forzoso
+4 = anual forzoso
+5 = cortersia
+6 = cancelado
+
+
+***estatus
+0 = inactivo
+1 = activo
+2 = por atender
+3
+
+
+****formas de pago/crecendo
+
+CA CAJA
+BA HSBC
+CB CARGO AUT. CREDITO
+CD CARGO AUT. DEBITO
+OX OXXO
+CM CABLE MAS
+AE AMERICAN EXPRESS
+AJ AJUSTE ABOGADO
+AT ANTICIPO
+
+***PagosClientes
+
+TipoCobro=0   Cobro
+TipoCobro=1   Caja
+
+
+******
+PagosClientes  
+
+
+0=INACTIVO
+1=ACTIVO
+2=POR REVISAR
+3=CORTESIA
+4=MOROSO
+5=CANCELADO
+6=LIBRE
+
+**Tabla Configuraciones**
+BonoPatrullero
+BonoCentralero
+
+***Activaciones Positivas***
+0 = Intento
+1 = RobosPos
+2 = Asaltos
+3 = Incendios
+4 = medicas
+
+
+ConcentradoAbonosxMonitoreo
+0 = no pago
+1 = pago
+2 = cortesia 
+
+BanderasMovimientos
+Anuales				1
+Contratos cortesias		2
+Bonificaciones			3
+Remisiones a Fact		4
+Cortesias en 0			5
+Remi que regresaron a pedido	6
+Clientes Cancelados		7
+Remisiones Faltantes 		8
+Facts en 0 con bon. en otro ped 9
+
+
+
+
+

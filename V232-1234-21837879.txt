@@ -1,0 +1,5 @@
+~232|Corporacion Mexicalense S.A. De C.V.|CME8507111Z9|Lazaro cárdenas del rio|359|S/N|Ex. Ejido Coahuila|Mexicali|Esquina monumento lazaro cardenas|Mexicali|Bc|Mexico|21360|104-2000||||||||||||2.2|V|152144|en una sola exhibicion|2012-04-27|09:24:48|Lazaro cárdenas del rio|359|S/N|Ex. Ejido Coahuila|Mexicali|Esquina monumento lazaro cardenas|Mexicali|Bc|Mexico|21360|VIÑA SANTIAGO S.A. DE C.V. |VSA0709037A5|BRASIL 47-A|||LOMAS DE QUERETARO|||QUERETARO,|QUERETARO.|MEXICO|0|2474.50|494.90|3588.02|1|FA|||||||||||||||||||||||||MXN|||||||||||||||||TRES MIL QUINIENTOS OCHENTA Y OCHO PESOS 02/100 |||||||||||||1234|COMERCIAL|||21837879||VGG|7||VINO ENSAMBLE ARENAL 2008|-|[V]|||lp3||||||||||||||||||||olgareyes93@hotmail.com||||||||2474.50|494.90|3588.02||||||16.00|618.62|||Régimen General de ley Personas Morales|No Identificado|||||||||1|||Mexicali, Bc||||||||2010||No Identificado|ingreso||1113.52
+¬Ensamble arenal|12|No aplica|206.21|2474.50|||||||||||ENS ARE|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¬TR|IVA|494.90|16.00
+TR|IEPS|618.62|25.00
+

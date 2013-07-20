@@ -1,0 +1,18 @@
+select 
+
+sum(abono),pc.idcliente,NombreCres
+from PagosClientes as pc
+left join pedidos as p on(p.idpedido = pc.idpedido)
+left join clientes as c on(c.idcliente = pc.idcliente)
+left join UnidadNegocio as u on(u.idUnidadNegocio = p.idUnidadNegocio)
+left join ClientesFact as cf on(cf.idfact = c.idfact)
+ where
+
+pc.FechaAlta between '2007/11/01' and '2007/11/07' and 
+p.estatus > 2 and c.estatus = 1 
+
+and pc.movimiento in (0,2) and abono > 0 and u.nombre = 'MONITOREO'
+
+group by idcliente
+
+order by pc.idcliente

@@ -1,0 +1,522 @@
+//2008/02/28 dalyla zona horaria ok
+unit Utest;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, MemDS, DBAccess, MyAccess, RzButton, StdCtrls, RzLstBox,
+  Mask, RzEdit, Winsock, RzLabel, strutils, DateUtils, RzPrgres, Buttons;
+
+type
+  Tfrmtest = class(TForm)
+    RzBitBtn1: TRzBitBtn;
+    sqlgeneral: TMyQuery;
+    sqlgeneral2: TMyQuery;
+    lista: TRzListBox;
+    edtest: TRzEdit;
+    btntickets: TRzButton;
+    RzBitBtn3: TRzBitBtn;
+    RzButton1: TRzButton;
+    sqlgeneral3: TMyQuery;
+    RzButton7: TRzButton;
+    RzButton2: TRzButton;
+    pbar: TRzProgressBar;
+    eddesde: TRzEdit;
+    edhasta: TRzEdit;
+    RzButton4: TRzButton;
+    RzButton9: TRzButton;
+    RzButton10: TRzButton;
+    RzButton11: TRzButton;
+    RzButton12: TRzButton;
+    btnsaldos: TBitBtn;
+    Button1: TButton;
+    RzButton3: TRzButton;
+    RzButton5: TRzButton;
+    lblresultado: TLabel;
+    edtelefono: TRzEdit;
+    Button2: TButton;
+    btnrecargos: TButton;
+    btnrecdup: TButton;
+    Button3: TButton;
+    procedure RzBitBtn1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnticketsClick(Sender: TObject);
+    procedure RzBitBtn3Click(Sender: TObject);
+    procedure RzButton4Click(Sender: TObject);
+    procedure RzButton7Click(Sender: TObject);
+    procedure RzButton2Click(Sender: TObject);
+    procedure RzButton9Click(Sender: TObject);
+    procedure RzButton10Click(Sender: TObject);
+    procedure RzButton11Click(Sender: TObject);
+    procedure RzButton12Click(Sender: TObject);
+    procedure btnsaldosClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure RzButton3Click(Sender: TObject);
+    procedure RzButton5Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure btnrecargosClick(Sender: TObject);
+    procedure btnrecdupClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmtest: Tfrmtest;
+
+implementation
+
+uses Udm, Urecursos, Udmrep, Ureportes, Uprincipal, UTCPComCliente,
+  WS_Infomensaje;
+
+{$R *.dfm}
+
+procedure Tfrmtest.RzBitBtn1Click(Sender: TObject);
+begin
+//RegenerarRepTicketsFinalizados(strtoint(edtest.text), 2007);
+end;
+
+procedure Tfrmtest.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+action := cafree;
+end;
+
+procedure Tfrmtest.btnticketsClick(Sender: TObject);
+begin
+masdedostickets(datetostr(Encodedate(yearof(today), monthof(Today), 1)), datetostr(Today), 1);
+Application.MessageBox('Temino', 'Aviso', MB_ICONINFORMATION);
+end;
+
+procedure Tfrmtest.RzBitBtn3Click(Sender: TObject);
+begin
+querys('select s.sid,s.idcliente,if(c.rsocial is null or c.rsocial = "",concat(ifnull(c.nombre,""), " ",'+'ifnull(c.amaterno,"")," ",ifnull(c.apaterno,"")),c.rsocial) as cliente, s.fecha_creacion, IF((to_days("'+datetostr(date)+'") -to_days(s.fecha_creacion)) > 1,(to_days("'+datetostr(date)+'") -to_days(s.fecha_creacion))'+
+'*24+(hour("'+timetostr(time)+'")-hour(s.hora_creacion)),IF((to_days("'+datetostr(date)+'") -to_days(s.fecha_creacion)) =1, '+
+       'IF(("'+timetostr(time)+'">s.hora_creacion),24+(hour("'+timetostr(time)+'")-hour(s.hora_creacion)),0),0))  AS horas,'+' if(nota is null or nota = "", if(visita3 is null or visita3 = "",if(visita2 is null or visita2 = "",if(visita1 is null or visita1="","",visita1),visita2),visita3), nota) as visita, visita1,visita2,visita3, '+
+       'if (FechaSupervisor < "1995/01/01","",FechaSupervisor) as FechaSupervisor, if (FechaConT < '+'"1995/01/01","",FechaConT) as FechaConT, VisitaSup,s.problema,s.CodTecnico, es.nombre as clasificacion  from servicios as s left join EstatusServicios as es ON (es.orden=s.status)  left join TipoServicios as ts ON (ts.idserv=es.idserv) '+
+       'left join  clientes as c on c.idcliente = s.idcliente left join notas as n on n.idnota=s.idnota '+'where s.status < 4  and ts.nombre="ESTATUS SERVICIO" having visita like "%REGISTRO AGREGADO%" order by sid desc', 0, sqlgeneral);
+
+sqlgeneral.first;
+while not sqlgeneral.Eof = true do
+  begin
+  querys('Delete from servicios where sid ='+sqlgeneral.fieldbyname('sid').asstring, 1, sqlgeneral2);
+  sqlgeneral.Next;
+  end;
+
+querys('select s.sid,s.idcliente,if(c.rsocial is null or c.rsocial = "",concat(ifnull(c.nombre,""), " ",ifnull(c.amaterno,"")," ",ifnull(c.apaterno,"")),c.rsocial)'+'as cliente, s.fecha_creacion, IF((to_days("'+datetostr(date)+'") -to_days(s.fecha_creacion)) > 1,(to_days("'+datetostr(date)+'") -to_days(s.fecha_creacion))'+
+'*24+(hour("'+timetostr(time)+'")-hour(s.hora_creacion)),IF((to_days("'+datetostr(date)+'") -to_days(s.fecha_creacion)) =1, '+
+       'IF(("'+timetostr(time)+'">s.hora_creacion),24+(hour("'+timetostr(time)+'")-hour(s.hora_creacion)),0),0))  AS horas, if(nota is null or nota = "", if(visita3 is null or visita3 = "",'+'if(visita2 is null or visita2 = "",if(visita1 is null or visita1="","",visita1),visita2),visita3), nota) as visita, visita1,visita2,visita3, '+
+       'if (FechaSupervisor < "1995/01/01","",FechaSupervisor) as FechaSupervisor, if (FechaConT < "1995/01/01","",FechaConT) as FechaConT, VisitaSup,s.problema,s.CodTecnico,'+' es.nombre as clasificacion  from servicios as s left join EstatusServicios as es ON (es.orden=s.status)  left join TipoServicios as ts ON (ts.idserv=es.idserv) '+
+       'left join  clientes as c on c.idcliente = s.idcliente left join notas as n on n.idnota=s.idnota where s.status < 4  and ts.nombre="ESTATUS SERVICIO" having visita '+'like "%REGISTRO ABIERTO%" order by sid desc', 0, sqlgeneral);
+
+sqlgeneral.first;
+while not sqlgeneral.Eof = true do
+  begin
+  querys('Update servicios set status=5 where sid ='+sqlgeneral.fieldbyname('sid').asstring, 1, sqlgeneral2);
+  sqlgeneral.Next;
+  end;
+
+end;
+
+procedure Tfrmtest.RzButton4Click(Sender: TObject);
+begin
+querys('select idpedido, idcliente from pedidos where FechaCreacion = "2008-04-05" and estatus = 3 and TotMn = 0 '+
+       'and concepto = "RECARGOS POR VENCIMIENTO DE MONITOREO CORRESPONDIENTE A Marzo 2008" and idUnidadNegocio = 5 and saldado = 0', 0, sqlgeneral);
+sqlgeneral.First;
+while not sqlgeneral.Eof = true do
+  begin
+  querys('Update pedidos set subtotal="40", Iva="4", TotDlls="4.04", TotMn="44", Saldo="44" where idpedido="'+sqlgeneral.fieldbyname('idpedido').asstring+'"', 1, sqlgeneral2);
+  querys('Update PagosClientes set cargo="44", restante="44" where idpedido="'+sqlgeneral.fieldbyname('idpedido').asstring+'" and movimiento=0', 1, sqlgeneral2);
+  querys('Update DetPedido set costo=40 where idpedido="'+sqlgeneral.fieldbyname('idpedido').asstring+'" ', 1, sqlgeneral2);
+  querys('Update clientes set saldo=(saldo+44) where idcliente="'+sqlgeneral.fieldbyname('idcliente').asstring+'" ', 1, sqlgeneral2);
+  sqlgeneral.Next;
+  end;
+
+application.messagebox('TTermino', '', MB_ICONINFORMATION);
+end;
+
+
+{
+procedure Tfrmtest.RzButton6Click(Sender: TObject);
+begin
+querys('Select  p.idpedido, rf.idpedido, p.idcliente, pc.idpago, p.TotMn from PagosClientes  as pc left join pedidos as p on p.idpedido = pc.idpedido '+
+       'left join RemiFact as rf on rf.idpedido=p.idpedido where pc.FechaAlta = "2007-11-30" and pc.usuario = "EDWIN" '+
+       'and p.idunidadnegocio=5 and p.concepto = "RECARGOS GENERADOS POR VENCIMIENTO DE MONITOREO"', 0, sqlgeneral);
+sqlgeneral.First;
+while not sqlgeneral.Eof = true do
+  begin
+  querys('Delete from RemiFact where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  querys('Delete from PagosClientes where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  querys('Delete from pedidos where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  querys('Update clientes set saldo = saldo-'+sqlgeneral.fieldbyname('TotMn').AsString+',  TotComprado=TotComprado-'+
+         sqlgeneral.fieldbyname('TotMn').AsString+' where idcliente = '+sqlgeneral.fieldbyname('idcliente').AsString+'', 1, sqlgeneral2);
+  sqlgeneral.Next;
+  end;
+end;   }
+
+procedure Tfrmtest.RzButton7Click(Sender: TObject);
+var fuente, destino:string;
+begin
+fuente := 'MinutaGerencial';
+destino := 'Minuta';
+querys('select idactividad, descripcion, idarea, fecha_creacion, '+
+       'fecha_termino, fecha_promesa, observaciones, impacto, estatus, usuario, fecha, hora from '+fuente+
+       '', 0, sqlgeneral);
+sqlgeneral.first;
+while not sqlgeneral.eof = true do
+ begin
+ querys('Select max(idactividad)+1 as idactividad from '+destino, 0, sqlgeneral2);
+ querys('Insert into '+destino+' (idactividad, descripcion, idarea, fecha_creacion, fecha_termino, fecha_promesa, '+
+        'observaciones, impacto, estatus, usuario, fecha, hora) values ("'+sqlgeneral2.fieldbyname('idactividad').asstring+'", "'+
+        sqlgeneral.fieldbyname('descripcion').asstring+'", "'+sqlgeneral.fieldbyname('idarea').asstring+'", "'+
+        sqlgeneral.fieldbyname('fecha_creacion').asstring+'", "'+sqlgeneral.fieldbyname('fecha_termino').asstring+'", "'+
+        sqlgeneral.fieldbyname('fecha_promesa').asstring+'", "'+sqlgeneral.fieldbyname('observaciones').asstring+'", "'+
+        sqlgeneral.fieldbyname('impacto').asstring+'", "'+sqlgeneral.fieldbyname('estatus').asstring+'", "'+
+        sqlgeneral.fieldbyname('usuario').asstring+'", "'+sqlgeneral.fieldbyname('fecha').asstring+'", "'+
+        sqlgeneral.fieldbyname('hora').asstring+'") ', 1, sqlgeneral2);
+ sqlgeneral.Next;
+ end;
+querys('Delete from '+fuente+'', 1, sqlgeneral);
+
+end;
+
+procedure Tfrmtest.RzButton2Click(Sender: TObject);
+begin
+RepPagosXLineaTipoCobro('2007/01/01','2007/12/31','','','IMP',true,false);
+end;
+
+procedure Tfrmtest.RzButton9Click(Sender: TObject);
+begin
+querys('Select  p.idpedido, rf.idpedido, p.idcliente, pc.idpago, p.TotMn from PagosClientes  as pc left join pedidos as p on p.idpedido = pc.idpedido '+
+       'left join RemiFact as rf on rf.idpedido=p.idpedido where pc.FechaAlta = "2008-06-05" and pc.usuario = "ozkar" and p.idunidadnegocio=5 and '+
+       'p.concepto = "RECARGOS POR VENCIMIENTO DE MONITOREO CORRESPONDIENTE A Mayo 2008"', 0, sqlgeneral);
+sqlgeneral.First;
+while not sqlgeneral.Eof = true do
+  begin
+  querys('Delete from RemiFact where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  querys('Delete from PagosClientes where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  querys('Delete from pedidos where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  querys('Update clientes set saldo = saldo-'+sqlgeneral.fieldbyname('TotMn').AsString+',  TotComprado=TotComprado-'+
+         sqlgeneral.fieldbyname('TotMn').AsString+' where idcliente = '+sqlgeneral.fieldbyname('idcliente').AsString+'', 1, sqlgeneral2);
+  querys('Delete from from PedidoInteres where idpedido = '+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+  sqlgeneral.Next;
+  end;
+
+end;
+
+procedure Tfrmtest.RzButton10Click(Sender: TObject);
+var condicion :string;
+begin
+condicion := '= year(curdate()) ';
+//Crea la tabla              
+querys('Drop table if exists ArticulosInventario'+frmprincipal.idmaq, 1, sqlgeneral);
+querys('Create table ArticulosInventario'+frmprincipal.idmaq+' select cod_cve, existencia as existencia, 0 as apartado, '+
+       '0 as backorder, 0 as ordenados, 0 as instalacion, 0 as minimo, 0 as maximo, existencia as extold, apartado '+
+       'as apartold, backorder as backold, ordenados as ordold, instalacion as instold, minimo as minold, maximo '+
+       'as maxold from articulos a where status = 1 and idlinea = 4 and inventariable = 1 order by cod_cve', 1, sqlgeneral);
+  {
+//Llena las existencias
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' a, ( Select dc.cod_cve, dc.cant_ord as cant from DetCompras dc '+
+       'left join compras c on c.idcompra=dc.idcompra left join articulos a on a.cod_cve=dc.cod_cve '+
+       'where year(c.FechaCompra) '+condicion+' and a.status = 1 group by cod_cve) as t set a.instalacion = t.cant '+
+       'where a.cod_cve=t.cod_cve ', 1, sqlgeneral);           }
+
+//Llena los apartados
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' a, ( Select dp.cod_cve, sum(dp.cant) as cant, p.idpedido '+
+       'from pedidos p left join DetPedido dp on dp.idpedido=p.idpedido left join UnidadNegocio un on un.idunidadnegocio '+
+       '= p.idunidadnegocio left join articulos a on a.cod_cve=dp.cod_cve where year(p.FechaCreacion) '+condicion+' and p.estatus = 0 and un.instalacion = 1 '+
+       'and a.inventariable = 1 and a.status = 1 group by dp.cod_cve ) t set a.apartado= t.cant '+
+       'where a.cod_cve=t.cod_cve ', 1, sqlgeneral);
+
+//Actualiza existencia y backorder
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' set backorder = if((existencia - apartado) < 0, (existencia - apartado)*-1, 0 ), '+
+       'existencia = if((existencia - apartado) < 0, 0, (existencia - apartado))', 1, sqlgeneral);
+
+//Llena los de instalacion
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' a, ( Select dp.cod_cve, sum(dp.cant-cant_salida) as cant, p.idpedido '+
+       'from pedidos p left join DetPedido dp on dp.idpedido=p.idpedido left join UnidadNegocio un on un.idunidadnegocio '+
+       '= p.idunidadnegocio left join articulos a on a.cod_cve=dp.cod_cve left join instalaciones i on i.idinstalacion = '+
+       'p.idinstal where p.estatus in(3,4) and un.instalacion = 1 and a.inventariable = 1 and a.status = 1 '+
+       'and year(p.FechaCreacion) '+condicion+' and i.estatus = 0 group by dp.cod_cve ) t set a.instalacion = t.cant '+
+       'where a.cod_cve=t.cod_cve ', 1, sqlgeneral);
+
+
+//Actualiza existencia con instalacion
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' set existencia = (existencia - instalacion)', 1, sqlgeneral);
+ 
+{//ajuste de Inventario
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' a, ( Select d.cod_cve, sum(d.cant_ord) as cant from '+
+       'AjusteInv a Left join DetAjusteInv d on d.idajuste=a.idajuste where year(Fechaalta) '+condicion+' and movimiento = '+
+       '"S" and a.idconcepto_es in(1,14) group by d.cod_cve) as t set existencia = existencia - t.cant where a.cod_cve=t.cod_cve', 1, sqlgeneral);
+
+querys('Update ArticulosInventario'+frmprincipal.idmaq+' a, ( Select d.cod_cve, sum(d.cant_ord) as cant from '+
+       'AjusteInv a Left join DetAjusteInv d on d.idajuste=a.idajuste where year(Fechaalta) '+condicion+' and movimiento = '+
+       '"E" and a.idconcepto_es in(17) group by d.cod_cve) as t set existencia = existencia + t.cant where a.cod_cve=t.cod_cve', 1, sqlgeneral); 
+
+querys('update articulos a, ArticulosInventario'+frmprincipal.idmaq+' i  set a.existencia = i.existencia, a.apartado = i.apartado, '+
+       'a.backorder = i.backorder, a.ordenados = i.ordenados, a.instalacion = i.instalacion where a.cod_cve = i.cod_cve', 1, sqlgeneral);}
+showmessage('Termino');
+end;
+
+procedure Tfrmtest.RzButton11Click(Sender: TObject);
+begin
+querys('update articulos a, ArticulosInventario'+frmprincipal.idmaq+' i  set a.existencia = i.existencia, a.apartado = i.apartado, '+
+       'a.backorder = i.backorder, a.ordenados = i.ordenados, a.instalacion = i.instalacion where a.cod_cve = i.cod_cve', 1, sqlgeneral);
+showmessage('Termino');
+
+end;
+
+procedure Tfrmtest.RzButton12Click(Sender: TObject);
+begin
+querys('SELECT idpedido, idcliente FROM pedidos WHERE FechaCreacion < "2011-01-01" AND estatus = 0 AND '+
+       'concepto NOT LIKE "%cortesia%" AND concepto NOT LIKE "%cortecia%"', 0, sqlgeneral);
+  sqlgeneral.First;
+  pbar.Percent := 0;
+  while not sqlgeneral.Eof = true do
+    begin
+    Self.Caption := 'Borrando pedido '+inttostr(sqlgeneral.RecNo)+' de '+inttostr(sqlgeneral.RecordCount);
+    querys('Delete from DetPedido where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+    querys('Delete from pedidos where idpedido ='+sqlgeneral.fieldbyname('idpedido').AsString, 1, sqlgeneral2);
+    pbar.Percent := strtoint(Format('%8.0f',[(100/sqlgeneral.RecordCount)*sqlgeneral.RecNo]));
+    sqlgeneral.Next;
+    end;
+  pbar.Percent := 100;
+  showmessage('Termino');
+end;
+
+
+
+procedure Tfrmtest.btnsaldosClick(Sender: TObject);
+var i,entro:integer; sqlgeneral5 : TmyQuery;
+begin
+sqlgeneral5 := TMyQuery.Create(self);
+sqlgeneral5.Connection := DMAccesos.conexion;
+
+i:= strtoint(edtest.text);
+ entro:=0;
+ frmprincipal.Caption := inttostr(i);
+
+querys('DROP TABLE IF EXISTS TempPago12',1,sqlgeneral5);
+
+querys('create table TempPago12 select pc.idpago,pc.movimiento as movimiento,pc.idpedido as idpedido,p.concepto,p.saldado '+
+       'from PagosClientes as pc left join  pedidos as p on (p.idpedido=pc.idpedido) ' +
+       'where p.estatus in(3,4)  and pc.movimiento in(0,1) and pc.idcliente ='+inttostr(i),1,sqlgeneral5);
+                                           //     and pc.restante  <> 0 
+querys('DELETE TempPago12 FROM TempPago12 inner join PagosClientes ON(TempPago12.idpedido= PagosClientes.idpedido) '+
+       'where TempPago12.movimiento = 0 and PagosClientes.movimiento =1 ',1,sqlgeneral5);
+
+//agregado por dalila 23/01/2010
+querys('update PagosClientes pc, TempPago12 t set pc.restante = 0 where pc.idpedido=t.idpedido and pc.movimiento in (2,10 )',1,sqlgeneral5);
+
+querys('SELECT sum(round(pc.cargo - pc.abono,2)) as total from TempPago12 as p left join PagosClientes as pc  ON (p.idpedido=pc.idpedido) '+
+       'where pc.movimiento <> 3 and pc.idcliente ='+inttostr(i),0,sqlgeneral5);
+
+bpcambios('clientes', inttostr(i), 'idcliente');
+querys('UPDATE clientes SET saldo='+quotedstr(sqlgeneral5.FieldByName('total').asstring)+' WHERE idcliente='+inttostr(i),1,sqlgeneral);
+apcambios('idcliente', inttostr(i), 'clientes', 'SaldoClientesPedido');
+
+querys('SELECT round(sum(pc.cargo) - sum(pc.abono),2) as total, pc.idpedido from PagosClientes as pc left join TempPago12 as p ON (p.idpago=pc.idpago) '+
+       'where pc.movimiento <> 3 and pc.idcliente ='+inttostr(i)+' group by pc.idpedido',0,sqlgeneral5);
+while not sqlgeneral5.Eof do
+  begin
+  querys('update PagosClientes pc, TempPago12 t set pc.restante = '+quotedstr(sqlgeneral5.FieldByName('total').asstring)+' '+
+        'where pc.idpedido=t.idpedido and pc.movimiento = 0 and pc.idpedido ='+quotedstr(sqlgeneral5.FieldByName('idpedido').asstring)+'',1,sqlgeneral3);
+  sqlgeneral5.Next;
+  end;
+
+querys('SELECT pc.idpedido as ped,truncate(sum(pc.restante),2) as total,p.saldado as saldado '+
+       'from PagosClientes as pc inner join TempPago12 as p ON (p.idpago=pc.idpago) '+
+       'where pc.restante > 0  and pc.idcliente ='+inttostr(i)+' group by pc.idpedido',0,sqlgeneral5);
+
+while not sqlgeneral5.Eof do
+  begin
+  if (sqlgeneral5.FieldByName('total').AsFloat < 2)  then    //por si las decimales jijiji
+    querys('UPDATE pedidos SET saldado =1,Saldo=0 WHERE idpedido='+quotedstr(sqlgeneral5.FieldByName('ped').AsString),1,sqlgeneral)
+  else
+    querys('UPDATE pedidos SET saldado = 0,Saldo='+quotedstr(sqlgeneral5.FieldByName('total').AsString)+' WHERE idpedido='+quotedstr(sqlgeneral5.FieldByName('ped').AsString),1,sqlgeneral);
+  entro:=1;
+  sqlgeneral5.Next;
+  end;
+
+if entro = 0  then
+  querys('UPDATE pedidos SET saldado =1,Saldo=0 WHERE estatus in(3,4,6) and idcliente='+inttostr(i),1,sqlgeneral);
+
+querys('DROP TABLE IF EXISTS TempPago12',1,sqlgeneral);
+
+end;
+
+procedure Tfrmtest.Button1Click(Sender: TObject);
+var piva:string;
+begin
+piva := GetConfiguraciones('IVA', true);
+querys('Select idpedido from pedidos where fechacreacion > "2010/03/01" and piva <> '+piva+' and estatus = 0 ', 0, sqlgeneral);
+while not sqlgeneral.Eof = true do
+   begin
+   querys('Update pedidos set piva = '+piva+', iva=round(SubTotal*'+piva+',2), TotDlls=round((SubTotal*(1+'+piva+'))/TipoCambio,2), '+
+          'TotMn=round((SubTotal*(1+'+piva+')),2)  where idpedido = '+sqlgeneral.FieldByName('idpedido').AsString, 1, sqlgeneral2);
+   frmprincipal.caption := sqlgeneral.FieldByName('idpedido').AsString;
+   sqlgeneral.Next;
+
+   end;
+end;
+
+procedure Tfrmtest.RzButton3Click(Sender: TObject);
+var memo : tmemo;  filename:string;
+begin
+filename := 'NCM964'+'-'+'8576'+'.txt';
+memo := tmemo.Create(self);
+  memo.Parent := self;
+  memo.visible := false;
+  memo.Lines.Add( FacturaElectronica('8576', 'NCM964', '1', 'NC', false));
+  memo.Lines.SaveToFile(filename);
+  memo.free;
+
+  frmprincipal.lanzador.FileName := filename;
+  frmprincipal.lanzador.Launch;
+end;
+
+procedure Tfrmtest.RzButton5Click(Sender: TObject);
+var  Resultado: Boolean;
+     servicio,user,pwd,msn:string;
+begin
+  Resultado := False;
+  lblResultado.Caption := 'Infomensaje en proceso';
+  lblResultado.Repaint;
+  servicio:= GetConfiguraciones('ServicioSMS',true);
+  user := GetConfiguraciones('UsuarioSMS',true);
+  pwd := GetConfiguraciones('PasswordSMS',true);
+  msn := GetConfiguraciones('MsnSMSxVencer',false);
+  Resultado := GetInfomensajeSoap(False, '', nil).Enviar(servicio,user,pwd,edtelefono.Text,msn);
+
+  if Resultado then
+    lblResultado.Caption := 'Infomensaje enviado'
+  else
+    lblResultado.Caption := 'Infomensaje no enviado'
+end;
+
+procedure Tfrmtest.Button2Click(Sender: TObject);
+begin
+          {
+querys('select idpedido, count(idpedido) as t from ( select pc.* from pedidos p '+
+       'Left join PagosClientes pc on pc.idpedido=p.idpedido Left join PedidoInteres i on i.idpedidoInteres=p.idpedido '+
+       'where pc.FechaAlta = "2011-08-02" and p.idUnidadNegocio = 5 and pc.cargo > 0  and movimiento = 3) as t '+
+       'group by idpedido', 0, sqlgeneral);
+
+       while not sqlgeneral.eof do
+       begin
+       querys('Delete from PagosClientes  '+
+              'where idpedido = "'+sqlgeneral.fieldbyname('idpedido').asstring+'" and movimiento=3 '+
+              'limit 1', 1, sqlgeneral2);
+       sqlgeneral.Next;
+       end;
+
+querys('select idpedido, count(idpedido) as t from ( select pc.* from pedidos p '+
+       'Left join PagosClientes pc on pc.idpedido=p.idpedido Left join PedidoInteres i on i.idpedidoInteres=p.idpedido '+
+       'where pc.FechaAlta = "2011-08-02" and p.idUnidadNegocio = 5 and pc.cargo > 0 ) as t '+
+       'group by idpedido having t > 1', 0, sqlgeneral);
+
+       while not sqlgeneral.eof do
+       begin
+       querys('update PagosClientes set movimiento = 3 '+
+              'where idpedido = "'+sqlgeneral.fieldbyname('idpedido').asstring+'" and movimiento=0 '+
+              'limit 1', 1, sqlgeneral2);
+       sqlgeneral.Next;
+       end;
+
+
+querys('select p.idpedido, count(dp.cod_cve) as tot from ( select idpedido, count(idpedido) as t '+
+       'from ( select pc.* from pedidos p Left join PagosClientes pc on pc.idpedido=p.idpedido '+
+       'Left join PedidoInteres i on i.idpedidoInteres=p.idpedido '+
+       'where pc.FechaAlta = "2011-08-02" and p.idUnidadNegocio = 5 and pc.cargo > 0 ) as t '+
+       'group by idpedido having t > 1 ) as p left join DetPedido dp on dp.idpedido=p.idpedido '+
+       'group by p.idpedido having tot > 1', 0, sqlgeneral);
+
+while not sqlgeneral.eof do
+       begin
+       querys('delete from DetPedido '+
+              'where idpedido = "'+sqlgeneral.fieldbyname('idpedido').asstring+'" limit 1', 1, sqlgeneral2);
+       sqlgeneral.Next;
+       end;                   }
+end;
+
+procedure Tfrmtest.btnrecargosClick(Sender: TObject);
+var idpedidoInteres, idpedido:string;   totalInteres : double;
+begin
+  if querys('Select pn.idpedidoInteres, p.idpedido, pt.FechaRemision, pc.FechaAlta '+
+            'from PedidoInteres pn left join pedidos p on p.idpedido=pn.idpedido '+
+            'inner join pedidos pt on pt.idpedido=pn.idpedidoInteres '+
+            'left join PagosClientes pc on pc.idpedido = p.idpedido '+
+            'where pn.fecha between "2012/01/01" and "2012/06/30" '+
+            'and p.idUnidadNegocio = 4 and pc.TipoPago = "BA" and pt.saldado = 0 '+
+            'and pc.movimiento <> 3 and p.saldado = 1 and pc.FechaAlta < pt.FechaRemision', 0, sqlgeneral2) > 0 then
+
+    begin
+    while not sqlgeneral2.eof do
+      begin
+      idpedidoInteres := sqlgeneral2.fieldbyname('idpedidoInteres').asstring;
+      idpedido := sqlgeneral2.fieldbyname('idpedido').asstring;
+
+      querys('Select sum(restante) as xtotal from PagosClientes where idpedido = '+ idpedidoInteres +
+             ' and movimiento <> 3 group by idpedido;', 0, sqlgeneral);
+      totalInteres := sqlgeneral.fieldbyname('xtotal').asfloat;
+
+      if totalInteres > 0 then
+        begin
+
+        querys('Delete from PagosClientes where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+        querys('Delete from RemiFact where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+        querys('Delete from DetPedido where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+        querys('Delete from pedidos where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+        querys('Delete from PedidoInteres where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+        frmprincipal.ucprincipal.Log('PROCESO AUTOMATICO- Elimino los recargos por pago en BANCO del pedido: '+idpedido, 3);
+        end;
+     sqlgeneral2.next;
+     end;
+    end;
+end;
+
+procedure Tfrmtest.btnrecdupClick(Sender: TObject);
+var idpedidoInteres, idpedido:string;   totalInteres : double;
+begin
+  if querys('select idcliente, idpedido, sum(c) as c from ( '+
+            'Select p.idcliente, p.idpedido, 1 as c, concepto '+
+            'from pedidos p where p.FechaCreacion = "2012/07/01" '+
+            'and p.idUnidadNegocio = 5 and p.concepto like "%JUNIO 2012%" '+
+            'and p.concepto like "%RECARGOS%" and p.saldado = 0 '+
+            ' ) as t group by idcliente having c = 2 ', 0, sqlgeneral2) > 0 then
+
+    begin
+    while not sqlgeneral2.eof do
+      begin
+      idpedidoInteres := sqlgeneral2.fieldbyname('idpedido').asstring;
+
+      querys('Delete from PagosClientes where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+      querys('Delete from RemiFact where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+      querys('Delete from DetPedido where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+      querys('Delete from pedidos where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+      querys('Delete from PedidoInteres where idpedido ='+idpedidoInteres, 1, sqlgeneral);
+      frmprincipal.ucprincipal.Log('PROCESO AUTOMATICO- Elimino los recargos por pago en BANCO del pedido: '+idpedido, 3);
+      sqlgeneral2.next;
+      end;
+    end;
+end;
+
+procedure Tfrmtest.Button3Click(Sender: TObject);
+begin
+querys('select pc.idpedido, p.idpedido, p.idcliente, pc.idcliente, p.saldado, pc.idpago '+
+       'from PagosClientes pc left join pedidos p on p.idpedido=pc.idpedido '+
+       'where p.FechaCreacion = "2012-07-01" and p.idUnidadNegocio = 5 '+
+       'and pc.idcliente<>p.idcliente and pc.movimiento <> 3', 1, sqlgeneral);
+while not sqlgeneral.eof do
+  begin
+  querys('update PagosClientes set movimiento=3 where idpago='+sqlgeneral.fieldbyname('idpago').AsString, 1, sqlgeneral2);
+  sqlgeneral.next;
+  end;
+end;
+
+End.
+
+
+

@@ -1,0 +1,9 @@
+cambios requeridos en pantalla pedidos
+
+**si a un articulo se le captura el iva del 10 o el 15% se calcula el iva en detalle
+ademas sobre eso se calcula el iva default por el total en el encabezado
+
+**Horas de Instlacion
+**Descuentos
+
+**Tener cuidado al guardar para no perder el detalle
